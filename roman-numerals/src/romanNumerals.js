@@ -1,14 +1,16 @@
+const NUMERAL_ONE = 'I';
+
 export function numberToRomanNumeral(number) {
   let numeral = '';
 
   if (number >= 9) {
     if (number === 9) {
-      numeral += 'I';
+      numeral += NUMERAL_ONE;
     }
     numeral += 'X';
   } else if (number >= 4) {
     if (number === 4) {
-      numeral += 'I';
+      numeral += NUMERAL_ONE;
     }
     numeral += 'V';
     if (number > 5) {
@@ -16,7 +18,7 @@ export function numberToRomanNumeral(number) {
     }
   } else {
     for (let i = 0; i < number; i += 1) {
-      numeral += 'I';
+      numeral += NUMERAL_ONE;
     }
   }
 
