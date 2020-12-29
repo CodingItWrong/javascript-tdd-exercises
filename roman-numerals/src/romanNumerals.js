@@ -1,11 +1,14 @@
 const NUMERAL_ONE = 'I';
-const FIVE_THRESHOLD = 5; // TODO: need a name that doesn't mention the value
+
+// TODO: need names that don't mention the values
+const FIVE_THRESHOLD = 5;
+const TEN_THRESHOLD = 10;
 
 export function numberToRomanNumeral(number) {
   let numeral = '';
 
-  if (number >= 9) {
-    if (number === 9) {
+  if (number >= TEN_THRESHOLD - 1) {
+    if (number === TEN_THRESHOLD - 1) {
       numeral += NUMERAL_ONE;
     }
     numeral += 'X';
