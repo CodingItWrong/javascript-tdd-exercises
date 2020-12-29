@@ -1,11 +1,9 @@
 export function numberToRomanNumeral(number) {
-  if (number === 9) {
-    return 'IX';
-  }
-
   let numeral = '';
 
-  if (number >= 4) {
+  if (number === 9) {
+    numeral += 'IX';
+  } else if (number >= 4) {
     if (number === 4) {
       numeral += 'I';
     }
