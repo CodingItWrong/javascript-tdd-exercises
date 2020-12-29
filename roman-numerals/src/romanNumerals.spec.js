@@ -2,6 +2,9 @@ function numberToRomanNumeral(number) {
   if (number === 4) {
     return 'IV';
   }
+  if (number === 5) {
+    return 'V';
+  }
 
   let numeral = '';
   for (let i = 0; i < number; i += 1) {
@@ -26,6 +29,10 @@ describe('romanNumerals', () => {
 
     it('converts 4 to IV', () => {
       expect(numberToRomanNumeral(4)).toEqual('IV');
+    });
+
+    it('converts 5 to V', () => {
+      expect(numberToRomanNumeral(5)).toEqual('V');
     });
   });
 });
