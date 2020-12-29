@@ -37,5 +37,9 @@ describe('romanNumerals', () => {
     it('converts 9 to IX', () => {
       expect(numberToRomanNumeral(9)).toEqual('IX');
     });
+
+    it('converts 10 to X', () => {
+      expect(numberToRomanNumeral(10)).toEqual('X');
+    });
   });
 });
