@@ -1,4 +1,8 @@
 function numberToRomanNumeral(number) {
+  if (number === 4) {
+    return 'IV';
+  }
+
   let numeral = '';
   for (let i = 0; i < number; i += 1) {
     numeral += 'I';
@@ -18,6 +22,10 @@ describe('romanNumerals', () => {
 
     it('converts 3 to III', () => {
       expect(numberToRomanNumeral(3)).toEqual('III');
+    });
+
+    it('converts 4 to IV', () => {
+      expect(numberToRomanNumeral(4)).toEqual('IV');
     });
   });
 });
