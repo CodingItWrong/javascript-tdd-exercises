@@ -29,5 +29,9 @@ describe('romanNumerals', () => {
     it('converts 7 to VII', () => {
       expect(numberToRomanNumeral(7)).toEqual('VII');
     });
+
+    it('converts 8 to VIII', () => {
+      expect(numberToRomanNumeral(8)).toEqual('VIII');
+    });
   });
 });
