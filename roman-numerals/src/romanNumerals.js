@@ -1,4 +1,5 @@
 const NUMERAL_ONE = 'I';
+const FIVE_THRESHOLD = 5; // TODO: need a name that doesn't mention the value
 
 export function numberToRomanNumeral(number) {
   let numeral = '';
@@ -8,13 +9,13 @@ export function numberToRomanNumeral(number) {
       numeral += NUMERAL_ONE;
     }
     numeral += 'X';
-  } else if (number >= 4) {
-    if (number === 4) {
+  } else if (number >= FIVE_THRESHOLD - 1) {
+    if (number === FIVE_THRESHOLD - 1) {
       numeral += NUMERAL_ONE;
     }
     numeral += 'V';
-    if (number > 5) {
-      numeral += numberToRomanNumeral(number - 5);
+    if (number > FIVE_THRESHOLD) {
+      numeral += numberToRomanNumeral(number - FIVE_THRESHOLD);
     }
   } else {
     for (let i = 0; i < number; i += 1) {
