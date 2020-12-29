@@ -6,11 +6,8 @@ export function numberToRomanNumeral(number) {
       numeral += 'I';
     }
     numeral += 'V';
-    if (number >= 6) {
-      numeral += 'I';
-    }
-    if (number === 7) {
-      numeral += 'I';
+    if (number > 5) {
+      numeral += numberToRomanNumeral(number - 5);
     }
   } else {
     for (let i = 0; i < number; i += 1) {
