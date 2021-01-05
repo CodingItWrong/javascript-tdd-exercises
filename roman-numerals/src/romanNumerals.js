@@ -1,14 +1,16 @@
 const NUMERAL_ONE = 'I';
 
-// TODO: need names that don't mention the values
-const FIVE_CONFIG = {
-  threshold: 5,
-  character: 'V',
-};
-const TEN_CONFIG = {
-  threshold: 10,
-  character: 'X',
-};
+// TODO: need a better name for "configs"
+const NUMERAL_CONFIGS = [
+  {
+    threshold: 10,
+    character: 'X',
+  },
+  {
+    threshold: 5,
+    character: 'V',
+  },
+];
 
 function handleThresholdCase({number, config}) {
   const {threshold, character} = config;
@@ -25,23 +27,20 @@ function handleThresholdCase({number, config}) {
 }
 
 export function numberToRomanNumeral(number) {
-  let numeral = '';
-
-  if (number >= TEN_CONFIG.threshold - 1) {
-    numeral += handleThresholdCase({
-      number,
-      config: TEN_CONFIG,
-    });
-  } else if (number >= FIVE_CONFIG.threshold - 1) {
-    numeral += handleThresholdCase({
-      number,
-      config: FIVE_CONFIG,
-    });
-  } else {
-    for (let i = 0; i < number; i += 1) {
-      numeral += NUMERAL_ONE;
+  for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
+    const config = NUMERAL_CONFIGS[i];
+    if (number >= config.threshold - 1) {
+      return handleThresholdCase({
+        number,
+        config,
+      });
     }
   }
 
+  // one case
+  let numeral = '';
+  for (let i = 0; i < number; i += 1) {
+    numeral += NUMERAL_ONE;
+  }
   return numeral;
 }
