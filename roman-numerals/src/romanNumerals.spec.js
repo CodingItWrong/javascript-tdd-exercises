@@ -49,5 +49,17 @@ describe('romanNumerals', () => {
     it('converts 12 to XII', () => {
       expect(numberToRomanNumeral(12)).toEqual('XII');
     });
+
+    it('converts 19 to XIX', () => {
+      expect(numberToRomanNumeral(19)).toEqual('XIX');
+    });
+
+    it('converts 20 to XX', () => {
+      expect(numberToRomanNumeral(20)).toEqual('XX');
+    });
+
+    it('converts 39 to XXXIX', () => {
+      expect(numberToRomanNumeral(39)).toEqual('XXXIX');
+    });
   });
 });
