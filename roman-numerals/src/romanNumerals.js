@@ -27,6 +27,12 @@ function handleThresholdCase({number, config}) {
 }
 
 export function numberToRomanNumeral(number) {
+  if (number >= 40) {
+    let numeral = 'XL';
+    numeral += numberToRomanNumeral(number - 40);
+    return numeral;
+  }
+
   for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
     const config = NUMERAL_CONFIGS[i];
     if (number >= config.threshold - 1) {

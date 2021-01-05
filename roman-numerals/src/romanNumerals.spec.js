@@ -61,5 +61,17 @@ describe('romanNumerals', () => {
     it('converts 39 to XXXIX', () => {
       expect(numberToRomanNumeral(39)).toEqual('XXXIX');
     });
+
+    it('converts 40 to XL', () => {
+      expect(numberToRomanNumeral(40)).toEqual('XL');
+    });
+
+    it('converts 41 to XLI', () => {
+      expect(numberToRomanNumeral(41)).toEqual('XLI');
+    });
+
+    it('converts 42 to XLII', () => {
+      expect(numberToRomanNumeral(42)).toEqual('XLII');
+    });
   });
 });
