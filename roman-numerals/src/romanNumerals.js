@@ -38,6 +38,9 @@ function handleThresholdCase({number, config}) {
 }
 
 export function numberToRomanNumeral(number) {
+  // TODO: what is different between the chunk below and handleThresholdCase?
+  // why does case 40 pass and 41 and up fail?
+  /*
   const {
     threshold,
     character,
@@ -56,6 +59,7 @@ export function numberToRomanNumeral(number) {
     }
     return numeral;
   }
+  */
 
   for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
     const config = NUMERAL_CONFIGS[i];
