@@ -77,5 +77,9 @@ describe('romanNumerals', () => {
     it('converts 49 to XLIX', () => {
       expect(numberToRomanNumeral(49)).toEqual('XLIX');
     });
+
+    it('converts 50 to L', () => {
+      expect(numberToRomanNumeral(50)).toEqual('L');
+    });
   });
 });
