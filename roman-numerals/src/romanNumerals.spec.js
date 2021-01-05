@@ -41,5 +41,13 @@ describe('romanNumerals', () => {
     it('converts 10 to X', () => {
       expect(numberToRomanNumeral(10)).toEqual('X');
     });
+
+    it('converts 11 to XI', () => {
+      expect(numberToRomanNumeral(11)).toEqual('XI');
+    });
+
+    it('converts 12 to XII', () => {
+      expect(numberToRomanNumeral(12)).toEqual('XII');
+    });
   });
 });

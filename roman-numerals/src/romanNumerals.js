@@ -12,6 +12,9 @@ export function numberToRomanNumeral(number) {
       numeral += NUMERAL_ONE;
     }
     numeral += 'X';
+    if (number > TEN_THRESHOLD) {
+      numeral += numberToRomanNumeral(number - TEN_THRESHOLD);
+    }
   } else if (number >= FIVE_THRESHOLD - 1) {
     if (number === FIVE_THRESHOLD - 1) {
       numeral += NUMERAL_ONE;
