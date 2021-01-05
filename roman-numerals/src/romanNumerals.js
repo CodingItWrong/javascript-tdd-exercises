@@ -1,23 +1,34 @@
 const NUMERAL_ONE = 'I';
 
 // TODO: need a better name for "configs"
+const FIFTY_CONFIG = {
+  threshold: 50,
+  character: 'L',
+  stepDownAmount: 10,
+  stepDownCharacter: 'X',
+};
 const NUMERAL_CONFIGS = [
+  FIFTY_CONFIG,
   {
     threshold: 10,
     character: 'X',
+    stepDownAmount: 1,
+    stepDownCharacter: 'I',
   },
   {
     threshold: 5,
     character: 'V',
+    stepDownAmount: 1,
+    stepDownCharacter: 'I',
   },
 ];
 
 function handleThresholdCase({number, config}) {
-  const {threshold, character} = config;
+  const {threshold, character, stepDownAmount, stepDownCharacter} = config;
 
   let numeral = '';
-  if (number === threshold - 1) {
-    numeral += NUMERAL_ONE;
+  if (number === threshold - stepDownAmount) {
+    numeral += stepDownCharacter;
   }
   numeral += character;
   if (number > threshold) {
@@ -27,17 +38,29 @@ function handleThresholdCase({number, config}) {
 }
 
 export function numberToRomanNumeral(number) {
-  if (number === 50) {
-    return 'L';
-  } else if (number >= 40) {
-    let numeral = 'XL';
-    numeral += numberToRomanNumeral(number - 40);
+  const {
+    threshold,
+    character,
+    stepDownAmount,
+    stepDownCharacter,
+  } = FIFTY_CONFIG;
+
+  if (number >= threshold - stepDownAmount) {
+    let numeral = '';
+    if (number !== threshold) {
+      numeral += stepDownCharacter;
+    }
+    numeral += character;
+    if (number !== threshold) {
+      numeral += numberToRomanNumeral(number - (threshold - stepDownAmount));
+    }
     return numeral;
   }
 
   for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
     const config = NUMERAL_CONFIGS[i];
-    if (number >= config.threshold - 1) {
+    const {threshold, stepDownAmount} = config;
+    if (number >= threshold - stepDownAmount) {
       return handleThresholdCase({
         number,
         config,
