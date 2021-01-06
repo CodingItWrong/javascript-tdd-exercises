@@ -1,14 +1,13 @@
 const NUMERAL_ONE = 'I';
 
 // TODO: need a better name for "configs"
-const FIFTY_CONFIG = {
-  threshold: 50,
-  character: 'L',
-  stepDownAmount: 10,
-  stepDownCharacter: 'X',
-};
 const NUMERAL_CONFIGS = [
-  FIFTY_CONFIG,
+  {
+    threshold: 50,
+    character: 'L',
+    stepDownAmount: 10,
+    stepDownCharacter: 'X',
+  },
   {
     threshold: 10,
     character: 'X',
@@ -27,40 +26,17 @@ function handleThresholdCase({number, config}) {
   const {threshold, character, stepDownAmount, stepDownCharacter} = config;
 
   let numeral = '';
-  if (number === threshold - stepDownAmount) {
+  let remainder = number - threshold;
+  if (number < threshold) {
     numeral += stepDownCharacter;
+    remainder += stepDownAmount;
   }
   numeral += character;
-  if (number > threshold) {
-    numeral += numberToRomanNumeral(number - threshold);
-  }
+  numeral += numberToRomanNumeral(remainder);
   return numeral;
 }
 
 export function numberToRomanNumeral(number) {
-  // TODO: what is different between the chunk below and handleThresholdCase?
-  // why does case 40 pass and 41 and up fail?
-  /*
-  const {
-    threshold,
-    character,
-    stepDownAmount,
-    stepDownCharacter,
-  } = FIFTY_CONFIG;
-
-  if (number >= threshold - stepDownAmount) {
-    let numeral = '';
-    if (number !== threshold) {
-      numeral += stepDownCharacter;
-    }
-    numeral += character;
-    if (number !== threshold) {
-      numeral += numberToRomanNumeral(number - (threshold - stepDownAmount));
-    }
-    return numeral;
-  }
-  */
-
   for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
     const config = NUMERAL_CONFIGS[i];
     const {threshold, stepDownAmount} = config;
