@@ -30,6 +30,7 @@ describe('romanNumerals', () => {
       [101, 'CI'],
       [199, 'CXCIX'],
       [400, 'CD'],
+      [500, 'D'],
     ])('converts %i to %s', (decimalNumber, romanNumeral) => {
       expect(numberToRomanNumeral(decimalNumber)).toEqual(romanNumeral);
     });
