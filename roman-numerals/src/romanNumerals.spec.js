@@ -32,6 +32,8 @@ describe('romanNumerals', () => {
       [400, 'CD'],
       [500, 'D'],
       [900, 'CM'],
+      [1982, 'MCMLXXXII'],
+      [3000, 'MMM'],
     ])('converts %i to %s', (decimalNumber, romanNumeral) => {
       expect(numberToRomanNumeral(decimalNumber)).toEqual(romanNumeral);
     });
