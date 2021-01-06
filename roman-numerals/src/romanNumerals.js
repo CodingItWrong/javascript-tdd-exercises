@@ -1,51 +1,50 @@
-const NUMERAL_ONE = 'I';
+const ONE_CHARACTER = 'I';
 
-// TODO: need a better name for "configs"
-const NUMERAL_CONFIGS = [
+const SYMBOL_CONFIGS = [
   {
-    threshold: 1000,
     character: 'M',
+    value: 1000,
     stepDownAmount: 100,
     stepDownCharacter: 'C',
   },
   {
-    threshold: 500,
     character: 'D',
+    value: 500,
     stepDownAmount: 100,
     stepDownCharacter: 'C',
   },
   {
-    threshold: 100,
     character: 'C',
+    value: 100,
     stepDownAmount: 10,
     stepDownCharacter: 'X',
   },
   {
-    threshold: 50,
     character: 'L',
+    value: 50,
     stepDownAmount: 10,
     stepDownCharacter: 'X',
   },
   {
-    threshold: 10,
     character: 'X',
+    value: 10,
     stepDownAmount: 1,
     stepDownCharacter: 'I',
   },
   {
-    threshold: 5,
     character: 'V',
+    value: 5,
     stepDownAmount: 1,
     stepDownCharacter: 'I',
   },
 ];
 
 function handleThresholdCase({number, config}) {
-  const {threshold, character, stepDownAmount, stepDownCharacter} = config;
+  const {value, character, stepDownAmount, stepDownCharacter} = config;
 
   let numeral = '';
-  let remainder = number - threshold;
-  if (number < threshold) {
+  let remainder = number - value;
+  if (number < value) {
     numeral += stepDownCharacter;
     remainder += stepDownAmount;
   }
@@ -55,10 +54,10 @@ function handleThresholdCase({number, config}) {
 }
 
 export function numberToRomanNumeral(number) {
-  for (let i = 0; i < NUMERAL_CONFIGS.length; i += 1) {
-    const config = NUMERAL_CONFIGS[i];
-    const {threshold, stepDownAmount} = config;
-    if (number >= threshold - stepDownAmount) {
+  for (let i = 0; i < SYMBOL_CONFIGS.length; i += 1) {
+    const config = SYMBOL_CONFIGS[i];
+    const {value, stepDownAmount} = config;
+    if (number >= value - stepDownAmount) {
       return handleThresholdCase({
         number,
         config,
@@ -69,7 +68,7 @@ export function numberToRomanNumeral(number) {
   // one case
   let numeral = '';
   for (let i = 0; i < number; i += 1) {
-    numeral += NUMERAL_ONE;
+    numeral += ONE_CHARACTER;
   }
   return numeral;
 }
