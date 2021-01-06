@@ -26,6 +26,9 @@ describe('romanNumerals', () => {
       [51, 'LI'],
       [59, 'LIX'],
       [90, 'XC'],
+      [100, 'C'],
+      [101, 'CI'],
+      [199, 'CXCIX'],
     ])('converts %i to %s', (decimalNumber, romanNumeral) => {
       expect(numberToRomanNumeral(decimalNumber)).toEqual(romanNumeral);
     });
