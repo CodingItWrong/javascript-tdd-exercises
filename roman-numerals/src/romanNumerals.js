@@ -3,37 +3,31 @@ const SYMBOL_CONFIGS = [
     character: 'M',
     value: 1000,
     stepDownAmount: 100,
-    stepDownCharacter: 'C',
   },
   {
     character: 'D',
     value: 500,
     stepDownAmount: 100,
-    stepDownCharacter: 'C',
   },
   {
     character: 'C',
     value: 100,
     stepDownAmount: 10,
-    stepDownCharacter: 'X',
   },
   {
     character: 'L',
     value: 50,
     stepDownAmount: 10,
-    stepDownCharacter: 'X',
   },
   {
     character: 'X',
     value: 10,
     stepDownAmount: 1,
-    stepDownCharacter: 'I',
   },
   {
     character: 'V',
     value: 5,
     stepDownAmount: 1,
-    stepDownCharacter: 'I',
   },
   {
     character: 'I',
@@ -43,11 +37,14 @@ const SYMBOL_CONFIGS = [
 ];
 
 function handleThresholdCase({number, config}) {
-  const {value, character, stepDownAmount, stepDownCharacter} = config;
+  const {value, character, stepDownAmount} = config;
 
   let numeral = '';
   let remainder = number - value;
   if (number < value) {
+    const stepDownCharacter = SYMBOL_CONFIGS.find(
+      c => c.value === stepDownAmount,
+    ).character;
     numeral += stepDownCharacter;
     remainder += stepDownAmount;
   }
