@@ -1,5 +1,3 @@
-const ONE_CHARACTER = 'I';
-
 const SYMBOL_CONFIGS = [
   {
     character: 'M',
@@ -37,6 +35,11 @@ const SYMBOL_CONFIGS = [
     stepDownAmount: 1,
     stepDownCharacter: 'I',
   },
+  {
+    character: 'I',
+    value: 1,
+    stepDownAmount: 0,
+  },
 ];
 
 function handleThresholdCase({number, config}) {
@@ -65,10 +68,5 @@ export function numberToRomanNumeral(number) {
     }
   }
 
-  // one case
-  let numeral = '';
-  for (let i = 0; i < number; i += 1) {
-    numeral += ONE_CHARACTER;
-  }
-  return numeral;
+  return '';
 }
