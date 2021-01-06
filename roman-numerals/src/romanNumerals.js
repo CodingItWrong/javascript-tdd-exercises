@@ -3,6 +3,12 @@ const NUMERAL_ONE = 'I';
 // TODO: need a better name for "configs"
 const NUMERAL_CONFIGS = [
   {
+    threshold: 500,
+    character: 'D',
+    stepDownAmount: 100,
+    stepDownCharacter: 'C',
+  },
+  {
     threshold: 100,
     character: 'C',
     stepDownAmount: 10,
